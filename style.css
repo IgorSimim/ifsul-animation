@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url('img/image_fundo.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-position: center top;
+  padding-top: 100px;
+  color: white;
+  font-family: 'Nunito', sans-serif;
+}
+
+
+header {
+  display: flex;
+  align-items: center;
+  background-color: #0079be;
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+header img {
+  height: 90px;
+}
+
+#imgnavbar {
+  margin-right: 70px;
+}
+
+header h1 {
+  margin-right: 30px;
+}
+
+#ball {
+  margin-left: 37%;
+}
+
+#imgatacante {
+  margin-left: auto;
+  margin-right: 50px;
+}
+
+.main-content {
+  display: flex;
+  margin: 80px auto 0 auto;
+  width: 849px;
+  height: 507px;
+}
+
+canvas {
+  display: block;
+  background: url('img/soccer_field.png') no-repeat center center;
+  background-size: contain;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
