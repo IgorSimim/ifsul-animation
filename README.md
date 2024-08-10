@@ -10,6 +10,11 @@ Projeto criado para a disciplina **Linguagem de Programação para Animação We
 - A ideia do projeto é a criação de um **game** que ocorre em um **campo de futebol**.
 - No jogo, você controla os movimentos de um **goleiro**, tendo que **defender as bolas** que vão em direção ao seu **gol**.
 
+## <img src="https://github.com/user-attachments/assets/3f0990db-a845-4248-9c33-da06702b681d" style="width: 55px;" align="center"/> Acessar o Projeto Online
+
+Você pode testar o game diretamente no seu navegador através do seguinte link: [Deploy da Aplicação](https://super-onze.netlify.app/)
+
+
 ## <img src="https://github.com/user-attachments/assets/07ca5d1c-39ba-4ebf-b399-61189423bf15" style="width: 55px;" align="center"/> Como Executar
 
 ### Clonando o repositório
