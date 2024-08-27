@@ -4,14 +4,13 @@
 }
 
 body {
-  background: url('img/image_fundo.jpg') no-repeat center center fixed;
+  background: url('../../img/image-fundo.jpg') no-repeat center center fixed;
   background-size: cover;
   background-position: center top;
   padding-top: 100px;
   color: white;
   font-family: 'Nunito', sans-serif;
 }
-
 
 header {
   display: flex;
@@ -23,6 +22,7 @@ header {
   top: 0;
   left: 0;
   z-index: 1000;
+  justify-content: center;
 }
 
 header img {
@@ -37,8 +37,17 @@ header h1 {
   margin-right: 30px;
 }
 
+#endo_defedendo {
+  position: absolute;
+  left: 63%;
+  bottom: 10px;
+  z-index: 10;
+}
+
 #ball {
   margin-left: 37%;
+  height: 73px;
+  width: 73px;
 }
 
 #imgatacante {
@@ -48,6 +57,7 @@ header h1 {
 
 .main-content {
   display: flex;
+  position: relative;
   margin: 80px auto 0 auto;
   width: 849px;
   height: 507px;
@@ -55,9 +65,76 @@ header h1 {
 
 canvas {
   display: block;
-  background: url('img/soccer_field.png') no-repeat center center;
+  background: url('../../img/soccer-field.png') no-repeat center center;
   background-size: contain;
   background-size: cover;
   width: 100%;
   height: 100%;
+}
+
+.elementScore {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2px 6px;
+  border-radius: 8px;
+  z-index: 100;
+}
+
+.elementScore img {
+  width: 2.5rem;
+}
+
+#score {
+  font-size: 2rem;
+  font-weight: 500;
+  color: black;
+}
+
+#game-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#loading-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#loading-image {
+  width: 500px;
+  animation: spin 3s linear infinite;
+}
+
+#loading-screen img {
+  margin-top: 130px;
+}
+
+#loading-screen p {
+  color: white;
+  font-size: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
