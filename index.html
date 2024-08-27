@@ -2,43 +2,52 @@
 <html lang="pt-br">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="#">
-	<title>Super Onze</title>
-	<script type='module' src="src/main.js"></script>
-	<link rel="icon" href="img/logo.jpg" type="image/png">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
-		integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
-		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <title>Super Onze</title>
+    <script type='module' src="src/main.js"></script>
+    <link rel="icon" href="img/logo.jpg" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+        integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
-	<header>
-		<img id="imgnavbar" src="img/logo_game.png" alt="Imagem da navbar">
-		<h1>Super Onze Game (Inazuma Eleven)</h1>
-		<img id="ball" src="img/ball.png" alt="Imagem de uma bola de futebol">
-		<img id="imgatacante" src="img/attacker.png" alt="Imagem do atacante">
-	</header>
-	<div class="main-content">
-		<canvas id="soccerCanvas">
-			Seu navegador não suporta a tag canvas!
-		</canvas>
-	</div>
-	<script>
-		document.addEventListener('DOMContentLoaded', () => {
-			anime({
-				targets: '#ball',
-				keyframes: [
-					{ translateX: -250, easing: 'easeOutQuad', duration: 300 },
-					{ translateX: 0, easing: 'easeInQuad', duration: 700 }
-				],
-				loop: true
-			});
-		});
-	</script>
+    <header>
+        <img id="imgnavbar" src="img/logo-game.png" alt="Imagem da navbar">
+        <h1>Super Onze Game (Inazuma Eleven)</h1>
+        <img id="endo_defedendo" src="img/endo-defendendo.png" alt=" Imagem do endo defedendo">
+        <img id="ball" src="img/ball.png" alt="Imagem de uma bola de futebol">
+        <img id="imgatacante" src="img/attacker.png" alt="Imagem do atacante">
+    </header>
+    <div class="main-content">
+        <div class="elementScore">
+            <img src="img/support-water.png" alt="Imagem do suporte de água">
+            <p id="score">0</p>
+        </div>
+        <canvas id="gameCanvas">
+            Seu navegador não suporta a tag canvas!
+        </canvas>
+    </div>
+    <div id="loading-screen">
+        <img id="loading-image" src="img/loading.png" alt="Loading...">
+        <p>Preparando o jogo... Aperte "Espaço" quando estiver pronto para jogar!</p>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            anime({
+                targets: '#ball',
+                keyframes: [
+                    { translateX: -250, easing: 'easeOutQuad', duration: 300 },
+                    { translateX: 0, easing: 'easeInQuad', duration: 700 }
+                ],
+                loop: true
+            });
+        });
+    </script>
 </body>
 
 </html>
