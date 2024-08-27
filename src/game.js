@@ -1,8 +1,12 @@
-import Ball from "./Ball";
-import Hero from "./Hero";
-// import { keyDownUp, hasKey } from "./keyboard"; 
 import { keyPress, key } from "./keyboard";
+import { loadAudio } from "./loaderAssets";
 
+import Hero from "./Hero";
+import Ball from "./Ball";
+import Support from "./Support";
+import Score from "./Score";
+
+window.start = false;
 let CTX;
 let CANVAS;
 const FRAMES = 60;
@@ -10,63 +14,135 @@ const FRAMES = 60;
 const qtdBalls = 1;
 let balls = Array.from({ length: qtdBalls });
 
-const hero = new Hero(7, 50, 10, 2, 20, 5, 'img/goalkeeper.png', FRAMES);
+const hero = new Hero(310, 40, 15, 2, 10, 10, '../../img/preparer.png', FRAMES);
+const support = new Support(15, 20, 20, '../../img/support-water.png');
+const score = new Score();
 
+let SoundLoading = null;
+// let SoundCollectingSupport = null;
+let SoundGameOver = null;
+let theme = null;
 let gameover = false;
 let anime;
 let boundaries;
 
-const init = () => {
-    console.log("Initialize Canvas");
-    CANVAS = document.querySelector('canvas');
+const init = async () => {
+    CANVAS = document.getElementById('gameCanvas');
+
+    if (!CANVAS) {
+        console.error('Canvas não encontrado');
+        return;
+    }
+
     CTX = CANVAS.getContext('2d');
 
     boundaries = {
         width: CANVAS.width,
-        height: CANVAS.height,
+        height: CANVAS.height
     };
 
     balls = balls.map(() =>
         new Ball(
             CANVAS.width - 5,
             Math.random() * CANVAS.height,
-            8, 3, 'img/ball.png'
+            6, 3, 'img/ball.png'
         )
     );
 
-    // keyDownUp(window);
+    try {
+        SoundLoading = await loadAudio('../../sounds/game-loading.mp3');
+        if (SoundLoading?.volume) {
+            SoundLoading.volume = .2;
+        } else {
+            throw new Error('Erro ao carregar o som de carregamento');
+        }
+    } catch (error) {
+        console.error(error);
+    }
+
+    // try {
+    //     SoundCollectingSupport = await loadAudio('../../sounds/.mp3');
+    //     if (SoundCollectingSupport?.volume) {
+    //         SoundCollectingSupport.volume = .2;
+    //     } else {
+    //         throw new Error('Erro ao carregar o som de carregamento');
+    //     }
+    // } catch (error) {
+    //     console.error(error);
+    // }
+
+    try {
+        SoundGameOver = await loadAudio('../../sounds/game-over.mp3');
+        if (SoundGameOver?.volume) {
+            SoundGameOver.volume = .2;
+        } else {
+            throw new Error('Erro ao carregar o som de game over');
+        }
+    } catch (error) {
+        console.error(error);
+    }
+
     keyPress(window);
-    loop();
+
+    if (SoundLoading) {
+        SoundLoading.play();
+    }
+
+    window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' && !window.start) {
+            window.start = true;
+            document.getElementById('loading-screen').style.display = 'none';
+
+            if (SoundLoading) {
+                SoundLoading.pause();
+                SoundLoading.currentTime = 0;
+            }
+            loop();
+        }
+    });
+
+    document.getElementById('loading-screen').style.display = 'flex';
 };
 
 const loop = () => {
     setTimeout(() => {
         CTX.clearRect(0, 0, CANVAS.width, CANVAS.height);
-        hero.move(boundaries, key)
-        hero.draw(CTX)
 
-        // if (hasKey('ArrowDown')) {
-        //     hero.moveDown(boundaries);
-        // }
-        // if (hasKey('ArrowUp')) {
-        //     hero.moveUp(boundaries);
-        // }
-        // if (hasKey('ArrowRight')) {
-        //     hero.moveRight(boundaries);
-        // }
-        // if (hasKey('ArrowLeft')) {
-        //     hero.moveLeft(boundaries);
-        // }
+        if (window.start) {
+            hero.move(boundaries, key);
+            hero.draw(CTX);
+            support.draw(CTX);
 
-        balls.forEach(b => {
-            b.move(boundaries);
-            b.draw(CTX);
-            gameover = !gameover ? hero.colide(b) : true;
-        });
+            balls.forEach(b => {
+                b.move(boundaries);
+                b.draw(CTX);
 
-        if (gameover) {
-            console.error('GOL!!!');
-            cancelAnimationFrame(anime);
+                gameover = !gameover ? hero.colide(b) : true;
+            });
+
+            if (theme && !theme.playing) {
+                theme.play();
+                theme.playing = true;
+            }
+
+            const scoring = hero.colide(support);
+
+            if (scoring) {
+                score.increment();
+                support.updatePosition();
+                score.update();
+                // SoundCollectingSupport.play();
+            }
+
+            if (gameover) {
+                SoundGameOver.play();
+                cancelAnimationFrame(anime);
+                setTimeout(() => {
+                    location.reload();
+                }, 1000);
+            } else {
+                anime = requestAnimationFrame(loop);
+            }
         } else {
             anime = requestAnimationFrame(loop);
         }

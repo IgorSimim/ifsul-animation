@@ -26,8 +26,8 @@ export default class Ball extends Circle {
 
 	limits(limits) {
 		if (this.x + this.size < 0) {
-			this.x = limits.height + this.size;
-			this.y = Math.random() * limits.width;
+			this.x = limits.width + this.size;
+			this.y = Math.random() * limits.height;
 		}
 	}
 }
