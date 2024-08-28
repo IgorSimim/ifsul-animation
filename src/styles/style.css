@@ -68,8 +68,8 @@ canvas {
   background: url('../../img/soccer-field.png') no-repeat center center;
   background-size: contain;
   background-size: cover;
-  width: 100%;
-  height: 100%;
+  width: 849px;
+  height: 507px; 
 }
 
 .elementScore {
