@@ -6,16 +6,39 @@ export default class Ball extends Circle {
 		super(x, y, size, -(speed));
 		this.imgUrl = imgUrl;
 
+		this.spriteWidth = 325 / 4;
+		this.spriteHeight = 105;
+		this.currentFrame = 0;
+		this.totalFrames = 4;
+		this.frameInterval = 10;
+		this.frameCounter = 0;
+
 		loadImage(this.imgUrl).then(img => {
 			this.img = img;
 		});
 	}
 
-	draw(ctx) {
+	draw(CTX) {
 		if (this.img) {
-			ctx.drawImage(this.img, this.x - this.size, this.y - this.size, this.size * 2, this.size * 2);
+			CTX.drawImage(
+				this.img,
+				this.currentFrame * this.spriteWidth,
+				0,
+				this.spriteWidth,
+				this.spriteHeight,
+				this.x - this.size,
+				this.y - this.size,
+				this.size * 2,
+				this.size * 2
+			);
+
+			this.frameCounter++;
+			if (this.frameCounter >= this.frameInterval) {
+				this.currentFrame = (this.currentFrame + 1) % this.totalFrames;
+				this.frameCounter = 0;
+			}
 		} else {
-			super.draw(ctx);
+			super.draw(CTX);
 		}
 	}
 
