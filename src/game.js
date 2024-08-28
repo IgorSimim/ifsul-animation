@@ -45,7 +45,7 @@ const init = async () => {
         new Ball(
             CANVAS.width - 5,
             Math.random() * CANVAS.height,
-            6, 3, 'img/ball.png'
+            10, 1, 'img/ball-game.png'
         )
     );
 
