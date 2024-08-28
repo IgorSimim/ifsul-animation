@@ -14,12 +14,12 @@ const FRAMES = 60;
 const qtdBalls = 1;
 let balls = Array.from({ length: qtdBalls });
 
-const hero = new Hero(310, 40, 15, 2, 10, 10, '../../img/preparer.png', FRAMES);
+const hero = new Hero(310, 40, 15, 2, 20, 20, '../../img/preparer.png', FRAMES);
 const support = new Support(15, 20, 20, '../../img/support-water.png');
 const score = new Score();
 
 let SoundLoading = null;
-// let SoundCollectingSupport = null;
+let SoundCollectingSupport = null;
 let SoundGameOver = null;
 let theme = null;
 let gameover = false;
@@ -60,16 +60,16 @@ const init = async () => {
         console.error(error);
     }
 
-    // try {
-    //     SoundCollectingSupport = await loadAudio('../../sounds/.mp3');
-    //     if (SoundCollectingSupport?.volume) {
-    //         SoundCollectingSupport.volume = .2;
-    //     } else {
-    //         throw new Error('Erro ao carregar o som de carregamento');
-    //     }
-    // } catch (error) {
-    //     console.error(error);
-    // }
+    try {
+        SoundCollectingSupport = await loadAudio('../../sounds/game-collect.mp3');
+        if (SoundCollectingSupport?.volume) {
+            SoundCollectingSupport.volume = .2;
+        } else {
+            throw new Error('Erro ao carregar o som de carregamento');
+        }
+    } catch (error) {
+        console.error(error);
+    }
 
     try {
         SoundGameOver = await loadAudio('../../sounds/game-over.mp3');
@@ -109,8 +109,8 @@ const loop = () => {
         CTX.clearRect(0, 0, CANVAS.width, CANVAS.height);
 
         if (window.start) {
-            hero.move(boundaries, key);
             hero.draw(CTX);
+            hero.move(boundaries, key);
             support.draw(CTX);
 
             balls.forEach(b => {
@@ -131,7 +131,7 @@ const loop = () => {
                 score.increment();
                 support.updatePosition();
                 score.update();
-                // SoundCollectingSupport.play();
+                SoundCollectingSupport.play();
             }
 
             if (gameover) {
