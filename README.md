@@ -71,9 +71,9 @@ code .
 
 Durante o jogo, você pode:
 
+- Pressionar 'w' para se mover para cima.
 - Pressionar 'a' para se mover para a esquerda.
 - Pressionar 's' para se mover para baixo.
-- Pressionar 'w' para se mover para cima.
 - Pressionar 'd' para se mover para a direita.
 - Pressionar 'espaço' para reiniciar o jogo se a bola colidir com a preparadora física.
 
