@@ -9,8 +9,8 @@ export default class Hero extends Circle {
             this.img = img
         })
 
-        this.cellWidth = 32
-        this.cellHeight = 49.2
+        this.cellWidth = 25 
+        this.cellHeight = 48 
         this.cellX = 0
         this.totalSprites = 4
         this.spriteSpeed = 1
@@ -21,11 +21,12 @@ export default class Hero extends Circle {
         this.status = 'right'
 
         this.hit = new Circle(
-            this.x + this.width / 2,
-            this.y + this.height / 2,
-            this.size,
+            this.x + this.width / 2, 
+            this.y + this.height - this.height / 3, 
+            this.width / 2.3, 
             0, "rgba(0,0,255,.5)"
         )
+
 
         this.animeSprite(FRAMES)
         this.setControls()
