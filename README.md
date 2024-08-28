@@ -10,6 +10,14 @@ Projeto criado para a disciplina **Linguagem de Programação para Animação We
 - A ideia é criar um **game** que se passa em um **campo de futebol**.
 - No jogo, você controla uma **preparadora física** que deve coletar **suportes de água** e desviar das **bolas** que se movem verticalmente no campo.
 
+## <img src="https://github.com/user-attachments/assets/ce7d90e8-761f-4ab4-932e-03aab25d1f3d" style="width: 55px;" align="center"/> Linguagens/Frameworks Usados para Animações
+
+| Logo | Framework/Animação |
+|------------|-----------|
+| <img src="https://github.com/user-attachments/assets/5fbb7380-e065-4931-a5d6-2ad76ebf26c7" style="width: 55px;" /> | Anime.js |
+| <img src="https://github.com/user-attachments/assets/2e801ead-e330-47a5-908c-d8c4a12bf0fa" style="width: 55px;" /> | Canvas |
+| <img src="https://github.com/user-attachments/assets/e84ea0ae-9fc1-4d8e-991c-c59e25180d6e" style="width: 55px;" /> | CSS Keyframes |
+
 ## <img src="https://github.com/user-attachments/assets/3f0990db-a845-4248-9c33-da06702b681d" style="width: 55px;" align="center"/> Acessar o Projeto Online
 
 Teste o game diretamente no navegador através do seguinte link: [Deploy da Aplicação](https://super-onze.netlify.app/)
