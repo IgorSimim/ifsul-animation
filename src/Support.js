@@ -23,14 +23,6 @@ class Support extends Circle {
 		);
 	}
 
-	animeSprite(FRAMES) {
-		setInterval(() => {
-			this.cellX = this.cellX < this.totalSprites - 1
-				? this.cellX + 1
-				: 0;
-		}, 1000 / (FRAMES * this.spriteSpeed / 10));
-	}
-
 	draw(CTX) {
 		CTX.drawImage(
 			this.img,
