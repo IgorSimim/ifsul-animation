@@ -21,6 +21,7 @@ const score = new Score();
 let SoundLoading = null;
 let SoundCollectingSupport = null;
 let SoundGameOver = null;
+
 let theme = null;
 let gameover = false;
 let anime;
@@ -28,12 +29,6 @@ let boundaries;
 
 const init = async () => {
     CANVAS = document.getElementById('gameCanvas');
-
-    if (!CANVAS) {
-        console.error('Canvas não encontrado');
-        return;
-    }
-
     CTX = CANVAS.getContext('2d');
 
     boundaries = {
