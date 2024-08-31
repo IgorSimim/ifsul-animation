@@ -21,9 +21,9 @@ export default class Hero extends Circle {
         this.status = 'right'
 
         this.hit = new Circle(
-            this.x + this.width / 2,
+            this.x + this.width / 3,
             this.y + this.height - this.height / 3,
-            this.width / 2.4,
+            this.width / 2.9,
             0, "rgba(0,0,255,.5)"
         )
 
