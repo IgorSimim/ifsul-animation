@@ -11,11 +11,11 @@ let CTX;
 let CANVAS;
 const FRAMES = 60;
 
-const qtdBalls = 1;
+const qtdBalls = 4;
 let balls = Array.from({ length: qtdBalls });
 
-const hero = new Hero(310, 40, 15, 2, 20, 20, '../../img/preparer.png', FRAMES);
-const support = new Support(15, 20, 20, '../../img/support-water.png');
+const hero = new Hero(310, 60, 15, 2, 20, 20, 'img/preparer.png', FRAMES);
+const support = new Support(15, 20, 20, 'img/support-water.png');
 const score = new Score();
 
 let SoundLoading = null;
@@ -40,12 +40,12 @@ const init = async () => {
         new Ball(
             CANVAS.width - 5,
             Math.random() * CANVAS.height,
-            10, 2, 'img/ball-game.png'
+            10, 3, 'img/ball-game.png'
         )
     );
 
     try {
-        SoundLoading = await loadAudio('../../sounds/game-loading.mp3');
+        SoundLoading = await loadAudio('sounds/game-loading.mp3');
         if (SoundLoading?.volume) {
             SoundLoading.volume = .2;
         } else {
@@ -56,7 +56,7 @@ const init = async () => {
     }
 
     try {
-        SoundCollectingSupport = await loadAudio('../../sounds/game-collect.mp3');
+        SoundCollectingSupport = await loadAudio('sounds/game-collect.mp3');
         if (SoundCollectingSupport?.volume) {
             SoundCollectingSupport.volume = .2;
         } else {
@@ -67,7 +67,7 @@ const init = async () => {
     }
 
     try {
-        SoundGameOver = await loadAudio('../../sounds/game-over.mp3');
+        SoundGameOver = await loadAudio('sounds/game-over.mp3');
         if (SoundGameOver?.volume) {
             SoundGameOver.volume = .2;
         } else {
