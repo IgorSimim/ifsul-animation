@@ -2,9 +2,9 @@ import Circle from "./geometries/Circle";
 import { loadImage } from "./loaderAssets";
 
 class Support extends Circle {
-	constructor(size, width, height, imgUrl) {
-		const x = Math.random() * (849 - width);
-		const y = Math.random() * (507 - height);
+	constructor(size, width, height, imgUrl, canvasWidth, canvasHeight) {
+		const x = Math.random() * (canvasWidth - width);
+		const y = Math.random() * (canvasHeight - height);
 		super(x, y, size);
 
 		this.imgUrl = imgUrl;
@@ -33,14 +33,14 @@ class Support extends Circle {
 		);
 	}
 
-	generatePosition() {
-		const x = Math.random() * (849 - this.width);
-		const y = Math.random() * (507 - this.height);
+	generatePosition(canvasWidth, canvasHeight) {
+		const x = Math.random() * (canvasWidth - this.width);
+		const y = Math.random() * (canvasHeight - this.height);
 		return { x, y };
 	}
 
-	updatePosition() {
-		const { x, y } = this.generatePosition();
+	updatePosition(canvasWidth, canvasHeight) {
+		const { x, y } = this.generatePosition(canvasWidth, canvasHeight);
 		this.x = x;
 		this.y = y;
 		this.updateHit();
