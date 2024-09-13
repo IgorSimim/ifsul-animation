@@ -39,7 +39,7 @@ header h1 {
 
 #endo_defedendo {
   position: absolute;
-  left: 66%;
+  left: 64%;
   bottom: 10px;
   z-index: 10;
 }
@@ -127,7 +127,7 @@ canvas {
 #loading-screen p {
   color: white;
   font-size: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 12em;
 }
 
 @keyframes spin {
